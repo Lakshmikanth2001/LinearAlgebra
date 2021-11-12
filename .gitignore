@@ -1,0 +1,6 @@
+test.bat
+build.yaml
+pytest.yaml
+.idea
+#ignore all cache file
+*.pyc 
