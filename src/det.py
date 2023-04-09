@@ -2,7 +2,7 @@ from typing import Union
 import numpy as np
 
 
-def echlon_form(A: Union[np.array, list], row: int, col: int):
+def echlon_form(A: Union[np.array, list[list]], row: int, col: int):
     for i in range(col - 1):
         for j in range(row - 1, i, -1):
             if A[j][i] == 0:
@@ -23,7 +23,7 @@ def echlon_form(A: Union[np.array, list], row: int, col: int):
     return A
 
 
-def build_cofactor_matrix(matrix: Union[np.array, list], rejected_row: int, rejected_col: int, size: int):
+def build_cofactor_matrix(matrix: Union[np.array, list[list]], rejected_row: int, rejected_col: int, size: int):
     a = [[0 for _ in range(size - 1)] for _ in range(size - 1)]
     row_a = 0
     for i in range(size):
@@ -41,7 +41,7 @@ def build_cofactor_matrix(matrix: Union[np.array, list], rejected_row: int, reje
     return a
 
 
-def det(matrix: Union[np.array, list], size: int):
+def det(matrix: Union[np.array, list[list]], size: int):
     if size == 2:
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
     else:

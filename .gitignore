@@ -2,5 +2,6 @@ test.bat
 build.yaml
 pytest.yaml
 .idea
+__pycache__
 #ignore all cache file
 *.pyc 

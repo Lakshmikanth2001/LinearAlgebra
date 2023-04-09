@@ -1,11 +1,12 @@
-from src import fast_expo
 import pytest
+from src import fast_expo
 from src.det import det
 from src.det import echlon_form
 from src.main import solve
 from src.inverse import inverse
 import numpy as np
 import numpy.testing as npt
+from src.numerical import integral
 
 
 class TestBasic:
@@ -166,3 +167,24 @@ class TestDigitalSignal:
         f3 = 30
         xn += np.sin(2*np.pi*f3*theta)
         signal_test_helper(xn, nature='real')
+
+class TestNumerical:
+    
+    @pytest.mark.slow("too slow")
+    def test_0(self):
+        npt.assert_almost_equal(integral(lambda x: np.sin(x), 0, np.pi, method = "trapizodial"), 2)
+
+    @pytest.mark.slow("too slow")
+    def test_1(self):
+        from src.numerical import integral
+        npt.assert_almost_equal(integral(lambda x: np.sin(x), 0, np.pi, method = "simpson"), 2)
+
+    @pytest.mark.slow("too slow")
+    def test_2(self):
+        from src.numerical import integral
+        npt.assert_almost_equal(integral(lambda x: np.sin(x), 0, np.pi, method = "simpson3"), 2)
+
+    @pytest.mark.slow("too slow")
+    def test_3(self):
+        from src.numerical import integral
+        npt.assert_almost_equal(integral(lambda x: np.exp(x), 0, 1), np.exp(1) - 1)
